@@ -1,18 +1,20 @@
 From ubuntu:trusty
-MAINTAINER bjasko@bring.out.ba
+MAINTAINER hernad@bring.out.ba
 
-# Set noninteractive mode for apt-get
+# thank you: bjasko@bring.out.ba
+
 ENV DEBIAN_FRONTEND noninteractive
 
-# Update
-RUN apt-get update
+RUN sed -e 's/archive./ba.archive./' /etc/apt/sources.list -i
+RUN apt-get update -y
+RUN apt-get -y install supervisor postfix sasl2-bin mailutils msmtp
 
-# Start editing
-# Install package here for cache
-RUN apt-get -y install supervisor postfix sasl2-bin mailutils
+ADD install.sh /install.sh
+ADD start.sh /start.sh
 
-# Add files
-ADD install.sh /opt/install.sh
+RUN chmod +x /install.sh
+RUN chmod +x /start.sh
 
-# Run
-CMD /opt/install.sh;/usr/bin/supervisord -c /etc/supervisor/supervisord.conf
+RUN /install.sh
+
+CMD /start.sh;/usr/bin/supervisord -c /etc/supervisor/supervisord.conf

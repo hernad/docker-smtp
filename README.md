@@ -1,11 +1,12 @@
-# docker-postfix-mailgw
-Simple postfix mail gateway 
+# docker-smtp
+
 
 ## build
 
-docker build -t postfix-mailqw .
+     docker build -t smtp
 
 ## run
-sudo docker run -p 25:25  -h mail.domain.com  -e maildomain=mail.domain.com  -e smtp_user=user:pwd  -e mailrelay=smtp.domain.com -e mynetwork=192.168.0.0/24 --name mailgw -d postfix-mailgw 
+
+    msmtp_client=yes smtp_ip=192.168.168.22 dns_ip=192.168.45.7 ./run_smtp.sh
 
 
