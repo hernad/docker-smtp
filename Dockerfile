@@ -7,7 +7,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 RUN sed -e 's/archive./ba.archive./' /etc/apt/sources.list -i
 RUN apt-get update -y
-RUN apt-get -y install supervisor postfix sasl2-bin mailutils msmtp
+RUN apt-get -y install supervisor postfix sasl2-bin mailutils msmtp dnsutils telnet
 
 ADD install.sh /install.sh
 ADD start.sh /start.sh

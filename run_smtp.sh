@@ -30,7 +30,7 @@ relay_domains="out.ba bring.out.ba rama-glas.com rama-glas.ba hano-bih.com hano.
 
 transport="kimtec.ba#smtp:[smtp.bih.net.ba]:587
 bih.net.ba#smtp:[smtp.bih.net.ba]:587
-out.ba#smtp:[smtp-lan.bring.out.ba]:25
+out.ba#smtp:[192.168.168.24]:25
 bring.out.ba#smtp:[smtp-lan.bring.out.ba]:25
 hano.ba#smtp:[mail.rama-glas.com]:25
 hano-bih.com#smtp:[mail.rama-glas.com]:25
