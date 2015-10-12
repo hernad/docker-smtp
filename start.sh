@@ -23,6 +23,7 @@ postconf -e smtpd_sender_restrictions="reject_unknown_sender_domain"
 if [[ ! -z $myvirtualmail ]]; then
   postconf -e "virtual_alias_maps=hash:/etc/postfix/virtual"
   postconf -e "virtual_mailbox_domains=$myvirtualdomains" 
+  postconf -e smtpd_client_restrictions="permit_mynetworks reject_unauth_destination"
   echo setup virtual maps
   echo "$myvirtualmail" > /etc/postfix/virtual
   postmap /etc/postfix/virtual
