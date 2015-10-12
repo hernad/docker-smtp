@@ -20,11 +20,9 @@ postconf -e relay_domains=hash:/etc/postfix/relay_domains
 postconf -e smtpd_client_restrictions="permit_mynetworks reject_unknown_helo_hostname reject_unauth_destination"
 postconf -e smtpd_sender_restrictions="reject_unknown_sender_domain"
 
-postconf -e "virtual_alias_maps=hash:/etc/postfix/virtual"
-postconf -e "virtual_mailbox_domains=$myvirtualdomains" 
-
-
 if [[ ! -z $myvirtualmail ]]; then
+  postconf -e "virtual_alias_maps=hash:/etc/postfix/virtual"
+  postconf -e "virtual_mailbox_domains=$myvirtualdomains" 
   echo setup virtual maps
   echo "$myvirtualmail" > /etc/postfix/virtual
   postmap /etc/postfix/virtual
