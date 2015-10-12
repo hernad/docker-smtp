@@ -25,6 +25,7 @@ mailrelay=${mailrelay:-[smtp.bih.net.ba]:587}
 smtp_user=${smtp_user:-bring.out}
 smtp_password=${smtp_password:-test}
 relay_domains="out.ba bring.out.ba rama-glas.com rama-glas.ba hano-bih.com hano.ba"
+myvirtualdomains=${myvirtualdomains:- }
 
 # deliver mail for kimtec.ba via smtp.bih.net.ba
 
@@ -54,6 +55,7 @@ docker run -d \
      -e mailrelay=$mailrelay \
      -e myhostname=$S_HOST.$S_DOMAIN \
      -e mynetworks="$mynetworks" \
+     -e myvirtualdomains="myvirtualdomains" \
      -e smtp_user=$smtp_user -e smtp_password=$smtp_password \
      -e transport="$transport" -e relay_domains="$relay_domains" \
      -e smtp_ip=$S_HOST_IP \
