@@ -5,9 +5,9 @@ PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 VOLUME_BASE=/data/zimbra
 S_HOST=smtp
 S_DEV=eth0
-S_DOMAIN=bring.out.ba
-S_HOST_IP=${smtp_ip:-192.168.168.22}
-S_DNS_HOST_IP=${dns_lan_ip:-192.168.45.7}
+S_DOMAIN=bug.out.ba
+S_HOST_IP=${smtp_ip:-192.168.168.45}
+S_DNS_HOST_IP=${dns_lan_ip:-192.168.46.254}
 
 
 msmtp_client=${msmtp_client:-no}
@@ -25,6 +25,8 @@ mailrelay=${mailrelay:-[smtp.bih.net.ba]:587}
 smtp_user=${smtp_user:-bring.out}
 smtp_password=${smtp_password:-test}
 relay_domains="out.ba bring.out.ba rama-glas.com rama-glas.ba hano-bih.com hano.ba"
+myvirtualdomains=${myvirtualdomains}
+myvirtualmail=${myvirtualmail}
 
 # deliver mail for kimtec.ba via smtp.bih.net.ba
 
@@ -54,9 +56,9 @@ docker run -d \
      -e mailrelay=$mailrelay \
      -e myhostname=$S_HOST.$S_DOMAIN \
      -e mynetworks="$mynetworks" \
+     -e myvirtualdomains="$myvirtualdomains" \
+     -e myvirtualmail="$myvirtualmail" \
      -e smtp_user=$smtp_user -e smtp_password=$smtp_password \
      -e transport="$transport" -e relay_domains="$relay_domains" \
      -e smtp_ip=$S_HOST_IP \
      smtp
-
-
