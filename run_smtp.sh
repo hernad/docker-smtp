@@ -6,8 +6,8 @@ VOLUME_BASE=/data/zimbra
 S_HOST=smtp
 S_DEV=eth0
 S_DOMAIN=bring.out.ba
-S_HOST_IP=${smtp_ip:-192.168.168.22}
-S_DNS_HOST_IP=${dns_lan_ip:-192.168.45.7}
+S_HOST_IP=${smtp_ip:-192.168.46.22}
+S_DNS_HOST_IP=${dns_lan_ip:-192.168.46.254}
 
 
 msmtp_client=${msmtp_client:-no}
@@ -60,5 +60,3 @@ docker run -d \
      -e transport="$transport" -e relay_domains="$relay_domains" \
      -e smtp_ip=$S_HOST_IP \
      smtp
-
-
