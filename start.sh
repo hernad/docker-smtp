@@ -24,6 +24,12 @@ postconf -e "virtual_alias_maps=hash:/etc/postfix/virtual"
 postconf -e "virtual_mailbox_domains=$myvirtualdomains" 
 
 
+if [[ ! -z $myvirtualmail ]]; then
+  echo setup virtual maps
+  echo "$myvirtualmail" > /etc/postfix/virtual
+  postmap /etc/postfix/virtual
+fi
+
 
 if [[ ! -z $mailrelay ]] ; then
   echo setup sasl_passwd

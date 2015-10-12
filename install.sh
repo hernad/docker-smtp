@@ -12,6 +12,7 @@ command=/opt/postfix.sh
 command=/usr/sbin/rsyslogd -n -c3
 EOF
 
+
 #  postfix
 cat >> /opt/postfix.sh <<EOF
 #!/bin/bash
